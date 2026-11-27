@@ -22,7 +22,7 @@ body {
   margin: 0;
   background: #fff;
   color: var(--ink);
-  font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", -apple-system, Helvetica, Arial, sans-serif;
+  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", "Hiragino Sans GB", -apple-system, Helvetica, Arial, sans-serif;
   font-size: 17px;
   line-height: 1.75;
 }
@@ -154,13 +154,18 @@ textarea:focus-visible {
 .btn--ghost { background: #fff; color: var(--accent-dark); }
 .btn--ghost:hover { background: #fff; color: var(--accent-dark); border-color: var(--accent-dark); }
 
-/* 表格：说明在上，只用细线 */
+/* 表格：说明在上，只用细线；窄屏横向滚动 */
+.table-scroll { overflow-x: auto; }
+
 table {
   width: 100%;
   margin-top: 10px;
   border-collapse: collapse;
   font-size: 0.94rem;
 }
+
+tbody td { font-weight: 400; color: #262626; }
+tbody tr:hover { background: #fbf7f8; }
 
 caption {
   caption-side: top;
