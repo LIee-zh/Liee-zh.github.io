@@ -1,24 +1,17 @@
 /* =========================================================
-   Fit & Sip Studio — 站点样式表（唯一外部 CSS 文件）
-   移动优先：先写小屏，再用 min-width 媒体查询逐级扩展
+   Fit & Sip Studio — one plain stylesheet
+   White page, one accent colour, hairlines instead of cards.
    ========================================================= */
 
-/* ---------- 1. 设计变量（3 个主色 + 中性色阶） ---------- */
 :root {
-  --bg: #fbf7f2;          /* 背景色：暖米白 */
-  --ink: #1e1b18;         /* 文字色：炭黑 */
-  --accent: #2f6b4f;      /* 强调色：松针绿 */
-  --accent-dark: #24513c;
-  --muted: #5c554e;
-  --surface: #ffffff;
-  --cream: #f3ede4;
-  --line: #e5dcd1;
-  --radius: 14px;
-  --wrap: 1120px;
-  --shadow: 0 10px 30px rgba(30, 27, 24, 0.07);
+  --ink: #1b1b1b;
+  --muted: #616161;
+  --line: #e4e4e4;
+  --accent: #2f6b4f;
+  --accent-dark: #23503b;
+  --wrap: 940px;
 }
 
-/* ---------- 2. 基础重置与排版 ---------- */
 *,
 *::before,
 *::after { box-sizing: border-box; }
@@ -27,87 +20,62 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background-color: var(--bg);
+  background: #fff;
   color: var(--ink);
-  font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, "PingFang SC", sans-serif;
   font-size: 17px;
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
 h1, h2, h3 {
-  font-family: Georgia, "Times New Roman", "Songti SC", serif;
-  font-weight: 700;
-  line-height: 1.24;
-  margin: 0 0 0.55em;
-  letter-spacing: 0.01em;
+  margin: 0 0 0.5em;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
-h1 { font-size: clamp(1.95rem, 6.2vw, 2.9rem); }
-h2 { font-size: clamp(1.35rem, 3.6vw, 1.7rem); }
-h3 { font-size: 1.12rem; }
+h1 { font-size: clamp(1.9rem, 5.4vw, 2.6rem); }
+h2 { font-size: 1.25rem; }
+h3 { font-size: 1rem; }
 
 p { margin: 0 0 1em; }
 p:last-child { margin-bottom: 0; }
 
-a { color: var(--accent-dark); text-underline-offset: 3px; }
+a { color: var(--accent-dark); }
+a:hover { color: var(--accent); }
 
 img { display: block; max-width: 100%; height: auto; }
 
-strong { font-weight: 700; }
-
-/* ---------- 2b. 双语：英文为主体，中文作为quiet的第二行 ---------- */
+/* quiet second line in Chinese, used three times on the site */
 .zh {
   display: block;
-  margin-top: 3px;
-  font-family: "PingFang SC", "Microsoft YaHei", "Songti SC", sans-serif;
-  font-size: 0.82em;
-  line-height: 1.5;
+  margin-top: 6px;
+  font-size: 0.6em;
   font-weight: 400;
-  letter-spacing: 0;
-  text-transform: none;
   color: var(--muted);
 }
-.zh--inline { display: inline; margin-left: 0.5em; }
 
-h1 > .zh,
-h2 > .zh,
-h3 > .zh {
-  margin-top: 5px;
-  font-family: Georgia, "Songti SC", serif;
-  font-size: 0.56em;
-  line-height: 1.35;
-}
-
-/* 深色底上中文改为浅色 */
-.cta-band .zh,
-.skip-link .zh,
-.nav-list a.is-active .zh { color: #f3ede4; opacity: 0.85; }
-
-/* 键盘可见焦点：无障碍必需 */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid var(--accent);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
-/* ---------- 3. 跳过导航（无障碍） ---------- */
 .skip-link {
   position: absolute;
-  left: 12px;
   top: -60px;
-  z-index: 30;
-  padding: 10px 16px;
+  left: 16px;
+  z-index: 20;
+  padding: 10px 14px;
   background: var(--ink);
   color: #fff;
-  border-radius: 8px;
-  transition: top 0.2s ease;
+  text-decoration: none;
 }
 .skip-link:focus { top: 12px; }
 
-/* ---------- 4. 通用容器 ---------- */
 .wrap {
   width: 100%;
   max-width: var(--wrap);
@@ -115,460 +83,273 @@ textarea:focus-visible {
   padding: 0 20px;
 }
 
-.section { padding: 44px 0; }
-.section--tight { padding: 30px 0; }
-.section--cream { background: var(--cream); }
+.section { padding: 36px 0; }
+.section--tight { padding: 22px 0 4px; }
 
-.eyebrow {
-  display: inline-block;
-  margin-bottom: 12px;
-  font-size: 0.82rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent-dark);
+.lead {
+  max-width: 58ch;
+  color: var(--muted);
 }
 
-.lead { font-size: 1.06rem; color: var(--muted); max-width: 46ch; }
+.small {
+  margin-top: 12px;
+  font-size: 0.86rem;
+  color: var(--muted);
+}
 
-/* ---------- 5. 页头：Logo 左上、联系方式右上、静态页头 ---------- */
+/* header: name, links, one line of contact */
 .site-header {
-  background: var(--bg);
   border-bottom: 1px solid var(--line);
+  padding: 18px 0 14px;
 }
 
-.header-top {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px 16px;
-  padding: 14px 0 10px;
+.site-header .wrap {
+  display: grid;
+  gap: 10px;
 }
 
 .logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: var(--ink);
-}
-.logo-mark {
-  width: 34px;
-  height: 34px;
-  flex: 0 0 34px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
-  font-family: Georgia, serif;
-  font-size: 1rem;
-}
-.logo-text { line-height: 1.1; }
-.logo-name {
-  display: block;
-  font-family: Georgia, serif;
   font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  text-decoration: none;
 }
-.logo-sub {
-  display: block;
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
+.logo:hover { color: var(--accent-dark); }
 
-.header-contact {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2px;
-  font-size: 0.86rem;
-  color: var(--muted);
-  font-style: normal; /* <address> 默认斜体，这里保持正体 */
-}
-.header-contact a { color: var(--ink); text-decoration: none; }
-.header-contact a:hover { color: var(--accent-dark); text-decoration: underline; }
-
-/* ---------- 6. 主导航：横向、当前页必须高亮 ---------- */
-.site-nav { padding-bottom: 12px; }
-
-.nav-list {
+.site-nav ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 20px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.nav-list a {
-  display: inline-block;
-  padding: 10px 14px;
-  border-radius: 999px;
-  font-size: 0.95rem;
-  text-decoration: none;
+.site-nav a {
   color: var(--ink);
-  border: 1px solid transparent;
-}
-.nav-list a:hover { background: var(--cream); }
-
-/* 当前页面：颜色 + 下划线 + 加粗，三重区分 */
-.nav-list a.is-active,
-.nav-list a[aria-current="page"] {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
-  font-weight: 700;
-}
-
-/* ---------- 7. 按钮 ---------- */
-.btn {
-  display: inline-block;
-  padding: 13px 22px;
-  border: 2px solid var(--accent);
-  border-radius: 10px;
-  background: var(--accent);
-  color: #fff;
-  font: inherit;
-  font-weight: 700;
-  font-size: 0.96rem;
-  line-height: 1.2;
-  text-align: center;
   text-decoration: none;
-  cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  font-size: 0.95rem;
 }
-.btn:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
-.btn:active { transform: translateY(1px); }
-
-.btn--ghost {
-  background: transparent;
+.site-nav a:hover { color: var(--accent); }
+.site-nav a[aria-current="page"] {
   color: var(--accent-dark);
-  border-color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: 600;
 }
-.btn--ghost:hover { background: var(--accent); color: #fff; }
+
+.header-meta {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+.header-meta a { color: var(--ink); text-decoration: none; }
+
+/* hero */
+.hero { padding: 32px 0 8px; }
+
+.hero-grid { display: grid; gap: 22px; align-items: center; }
 
 .btn-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 22px;
-}
-
-/* ---------- 8. 首页主视觉 ---------- */
-.hero { padding: 26px 0 34px; }
-
-.hero-grid {
-  display: grid;
-  gap: 22px;
-  align-items: center;
-}
-
-.hero-copy .lead { max-width: 34ch; }
-
-.hero-media { position: relative; }
-
-.hero-media img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-.hero-badge {
-  display: inline-block;
-  max-width: 100%;
-  margin-top: 14px;
-  padding: 8px 14px;
-  border-radius: 14px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  font-size: 0.86rem;
-  line-height: 1.5;
-  text-align: left;
-  color: var(--muted);
-}
-.hero-badge b { color: var(--ink); }
-.hero-badge .zh { margin-top: 2px; font-size: 0.86em; }
-
-/* ---------- 9. 卡片与网格 ---------- */
-.grid { display: grid; gap: 18px; }
-.grid--2 { grid-template-columns: 1fr; }
-
-.card {
-  padding: 22px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-}
-.card h3 { margin-bottom: 8px; }
-.card p { color: var(--muted); font-size: 0.95rem; }
-
-/* ---------- 10. 表格（每页必备元素） ---------- */
-.table-wrap {
+  gap: 10px;
   margin-top: 18px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--surface);
 }
 
+.btn {
+  display: inline-block;
+  padding: 11px 18px;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  background: var(--accent);
+  color: #fff;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: #fff; }
+
+.btn--ghost {
+  background: #fff;
+  color: var(--accent-dark);
+}
+.btn--ghost:hover { background: #fff; color: var(--accent-dark); border-color: var(--accent-dark); }
+
+/* tables: caption above, hairlines only */
 table {
   width: 100%;
+  margin-top: 10px;
   border-collapse: collapse;
-  font-size: 0.95rem;
+  font-size: 0.94rem;
 }
 
 caption {
   caption-side: top;
-  padding: 14px 16px 10px;
+  padding-bottom: 8px;
   text-align: left;
-  font-weight: 700;
-  color: var(--ink);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 thead th {
-  background: var(--cream);
+  padding: 8px 10px 8px 0;
   text-align: left;
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
+  font-size: 0.84rem;
+  font-weight: 600;
   color: var(--muted);
-  padding: 10px 16px;
   border-bottom: 1px solid var(--line);
 }
 
 tbody td,
 tbody th {
-  padding: 12px 16px;
+  padding: 11px 10px 11px 0;
   border-bottom: 1px solid var(--line);
   vertical-align: top;
 }
-tbody th { text-align: left; font-weight: 700; }
-tbody tr:last-child td,
-tbody tr:last-child th { border-bottom: 0; }
+tbody th { text-align: left; font-weight: 600; font-variant-numeric: tabular-nums; }
 
-.tag {
-  display: inline-block;
-  padding: 2px 9px;
-  border-radius: 999px;
-  background: var(--cream);
-  color: var(--accent-dark);
-  font-size: 0.78rem;
-  font-weight: 700;
-}
-
-/* 移动端：表格改为堆叠卡片，避免横向溢出 */
-@media (max-width: 719px) {
-  .table--stack { display: block; }
-  .table--stack caption { display: block; }
-  .table--stack thead {
-    position: absolute;
-    width: 1px; height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-  }
-  .table--stack tbody,
-  .table--stack tr { display: block; }
-  .table--stack tr {
-    padding: 12px 16px;
-    border-bottom: 1px solid var(--line);
-  }
-  .table--stack tr:last-child { border-bottom: 0; }
-  .table--stack td,
-  .table--stack th {
-    display: block;
-    padding: 5px 0;
-    border: 0;
-    font-size: 0.93rem;
-  }
-  .table--stack td::before,
-  .table--stack th::before {
-    content: attr(data-label);
-    display: block;
-    margin-bottom: 2px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: var(--muted);
-  }
-}
-
-/* ---------- 11. 列表（每页必备元素） ---------- */
-.steps,
-.price-list,
-.check-list {
+/* price lists */
+.price-list {
   margin: 0;
-  padding-left: 1.25em;
+  padding: 0;
+  list-style: none;
 }
-.steps { list-style: decimal; }
-.price-list { list-style: none; padding-left: 0; margin-top: 16px; }
-.check-list { list-style: none; padding-left: 0; }
 
 .price-list li {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   gap: 16px;
-  padding: 11px 0;
-  border-bottom: 1px dashed var(--line);
-}
-.price-list li:last-child { border-bottom: 0; }
-.price-list .price { font-family: Georgia, serif; font-weight: 700; white-space: nowrap; }
-.price-list .note { display: block; font-size: 0.84rem; color: var(--muted); font-weight: 400; }
-
-.steps li { margin-bottom: 10px; }
-.steps li::marker { color: var(--accent); font-weight: 700; }
-
-.check-list li { position: relative; padding-left: 1.4em; margin-bottom: 8px; }
-.check-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--accent);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
 }
 
-/* ---------- 12. 图片 + 文字并排 ---------- */
-.split {
-  display: grid;
-  gap: 20px;
-  align-items: start;
+.price-list .list-head {
+  border: 0;
+  padding-top: 0;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
-.split-media img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: var(--radius);
-}
-figcaption,
-.caption {
-  margin-top: 10px;
+
+.price-list .note {
+  display: block;
   font-size: 0.84rem;
   color: var(--muted);
 }
-figure { margin: 0; }
 
-/* ---------- 13. 强调区块 / CTA ---------- */
-.cta-band {
-  margin-top: 8px;
-  padding: 26px 22px;
-  border-radius: var(--radius);
-  background: var(--ink);
-  color: #f3ede4;
+.price-list .price { font-weight: 600; white-space: nowrap; }
+
+.plain-list {
+  margin: 0;
+  padding-left: 1.1em;
+  list-style: disc;
 }
-.cta-band h2 { color: #fff; margin-bottom: 8px; }
-.cta-band p { color: #d8cfc4; max-width: 52ch; }
-.cta-band .btn { background: #fff; border-color: #fff; color: var(--ink); }
-.cta-band .btn:hover { background: var(--cream); border-color: var(--cream); }
+.plain-list li { margin-bottom: 8px; }
 
-/* ---------- 14. 表单 ---------- */
+/* two columns of lists, image beside text */
+.grid-2 { display: grid; gap: 24px; margin-top: 6px; }
+
+.split { display: grid; gap: 22px; align-items: start; }
+
+/* trial call-to-action: text and button on one line, no colour block */
+.callout {
+  display: grid;
+  gap: 14px;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  max-width: 720px;
+}
+
+/* form */
 .form-grid {
   display: grid;
   gap: 16px;
-  margin-top: 20px;
+  margin-top: 18px;
 }
+.form-grid .field--full { grid-column: 1; }
 
-.field { display: block; }
 .field span {
   display: block;
   margin-bottom: 6px;
   font-size: 0.88rem;
-  font-weight: 700;
+  font-weight: 600;
 }
-.field small { display: block; margin-top: 6px; font-size: 0.82rem; color: var(--muted); }
 
 input[type="text"],
-input[type="email"],
-input[type="tel"],
 select,
 textarea {
   width: 100%;
-  padding: 12px 14px;
+  padding: 11px 12px;
   border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--surface);
+  border-radius: 4px;
+  background: #fff;
   color: var(--ink);
   font: inherit;
-  font-size: 0.98rem;
-  min-height: 46px;
+  font-size: 0.96rem;
+  min-height: 44px;
 }
-textarea { min-height: 120px; resize: vertical; }
-
-.form-note { margin-top: 14px; font-size: 0.84rem; color: var(--muted); }
-
-/* ---------- 15. 门店信息 ---------- */
-.info-grid { display: grid; gap: 22px; }
+textarea { min-height: 110px; resize: vertical; }
 
 address { font-style: normal; }
 address p { margin: 0 0 6px; }
 
-.meta-label {
-  display: block;
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 6px;
-}
-
-/* ---------- 16. 页脚 ---------- */
+/* footer: light, two columns */
 .site-footer {
   margin-top: 40px;
-  padding: 30px 0 26px;
-  background: var(--ink);
-  color: #d8cfc4;
-  font-size: 0.9rem;
+  padding: 26px 0 34px;
+  border-top: 1px solid var(--line);
+  font-size: 0.88rem;
+  color: var(--muted);
 }
-.footer-grid { display: grid; gap: 16px; }
-.site-footer a { color: #f3ede4; }
-.site-footer h2 {
-  color: #fff;
-  font-size: 1.05rem;
-  margin-bottom: 8px;
-}
-.site-footer p { margin: 0 0 4px; }
+.footer-grid { display: grid; gap: 14px; }
+.site-footer p { margin: 0 0 6px; }
+.site-footer a { color: var(--ink); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+.site-footer strong { color: var(--ink); }
 
-/* ---------- 17. 平板及以上 ---------- */
+/* tablet */
 @media (min-width: 640px) {
   .wrap { padding: 0 28px; }
-  .section { padding: 56px 0; }
+  .section { padding: 44px 0; }
+  .section--tight { padding: 28px 0 6px; }
 
-  .grid--2 { grid-template-columns: repeat(2, 1fr); }
+  .site-header .wrap {
+    grid-template-columns: auto 1fr;
+    align-items: baseline;
+    column-gap: 28px;
+  }
+  .site-nav { justify-self: end; }
+  .header-meta { grid-column: 1 / -1; }
 
-  .hero-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
-
-  .footer-grid { grid-template-columns: repeat(2, 1fr); }
-
-  .header-contact { align-items: flex-end; }
-}
-
-/* ---------- 18. 桌面 ---------- */
-@media (min-width: 960px) {
-  body { font-size: 18px; }
-  .section { padding: 72px 0; }
-  .section--tight { padding: 38px 0; }
-  .hero { padding: 40px 0 56px; }
-
-  .split { grid-template-columns: 1.05fr 1fr; gap: 40px; }
-  .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 28px; }
-
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .hero-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .form-grid { grid-template-columns: 1fr 1fr; }
   .form-grid .field--full { grid-column: 1 / -1; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .callout { grid-template-columns: 1fr auto; }
+}
 
-  .cta-band {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 28px;
-    padding: 34px 38px;
-  }
-  .cta-band > div { max-width: 60%; }
+/* desktop */
+@media (min-width: 960px) {
+  body { font-size: 18px; }
+  .section { padding: 56px 0; }
+  .hero { padding: 44px 0 8px; }
+  .split { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+
+/* narrow: keep tables from pushing the page sideways */
+@media (max-width: 420px) {
+  table { font-size: 0.86rem; }
+  tbody td, tbody th, thead th { padding-right: 6px; }
 }
