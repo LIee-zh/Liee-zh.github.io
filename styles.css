@@ -217,7 +217,7 @@ tbody th { text-align: left; font-weight: 600; white-space: nowrap; }
 
 /* 图文并排 */
 .split { display: grid; gap: 24px; align-items: start; }
-.split img { max-height: 460px; width: auto; object-fit: cover; object-position: center top; }
+.split img { width: 100%; height: auto; }
 
 address { font-style: normal; }
 
