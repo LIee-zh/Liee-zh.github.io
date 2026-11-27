@@ -15,7 +15,6 @@
 | `profile.html` | 基本资料与获奖记录 |
 | `styles.css` | 全站样式（白底、单一强调色、细线表格） |
 | `xiwei-1.jpg` `xiwei-2.jpg` `xiwei-3.jpg` | 三张写真，来自公开写真 |
-| `images/` | 早期版本的图片，已不被引用 |
 
 ## 说明
 
